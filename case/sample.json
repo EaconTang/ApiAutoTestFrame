@@ -1,66 +1,48 @@
 {
-  "name": "用例名称",
-  "author": "用例作者",
-  "createTime": "(可选)创建时间",
-  "lastModifyTime": "(可选)最后修改时间",
-  "lastModifiedAuthor": "(可选)最后修改人",
-  "summary": "用例描述",
-  "comment": "(可选)备注说明",
+  "name": "test",
+  "author": "eacon",
+  "createTime": "2016/04/01",
+  "lastModifyTime": "",
+  "lastModifiedAuthor": "",
+  "summary": "just for test",
+  "comment": "nothing",
   "precondition": {
-    "version": "系统版本",
-    "function": [
+    "version": "",
+    "prefunction": [
       {
-        "prefunc": "前置函数名称",
+        "func_name": "say_hello",
         "args": [
           {
-            "type": "参数数据类型",
-            "value": "参数值"
+            "name": "hello_to",
+            "value": "world",
+            "type": "string"
           }
         ]
       }
     ],
-    "dependency": [
-      "依赖接口1",
-      "依赖接口2",
-      "..."
-    ]
+    "dependency": []
   },
   "step": [
     {
       "input": {
         "http": {
-          "ip": "HTTP请求的IP地址",
-          "port": "HTTP请求的端口",
-          "path": "HTTP请求的路径",
-          "url": "HTTP请求的完整URL",
-          "method": "GET/POST/DELETE",
-          "param": [
-            {
-              "type": "参数数据类型",
-              "value": "参数值"
-            }
-          ]
-        },
-        "cm": {
-          "server": "webadmin",
-          "cmd": "01",
-          "param": [
-            {
-              "type": "参数数据类型",
-              "value": "参数值"
-            }
-          ]
+          "ip": "",
+          "port": "",
+          "path": "",
+          "url": "http://localhost:4242/api/stats",
+          "method": "GET",
+          "param": null
         }
       },
       "output": {
-        "strict": "严格匹配，不允许返回其他变量",
-        "match": [
+        "strict": false,
+        "expect": [
           {
-            "var": "输出的变量名",
-            "opt": "比较运算符（大于／等于／小于／不等于／加减N/正则满足/...）",
+            "var": "code",
+            "cmp": "==",
             "val": {
-              "type": "期望数据类型",
-              "value": "期望数据的值"
+              "type": "int",
+              "value": "200"
             }
           }
         ]

@@ -1,11 +1,18 @@
-# from connection import IConnection
+from src.protocol.interface import IConnection
 import requests
 
 
-class HTTPConnection(object):
+class HTTPConnection(IConnection):
     def __init__(self, url=None, ip=None, port=None, path=None, method='GET', param=None):
         """
         params in case-file: "step->input->http"
+        Either 'url' or 'ip' + 'port' + 'path' is required.
+        :param url:
+        :param ip:
+        :param port:
+        :param path:
+        :param method:
+        :param param:
         """
         self.name = 'http'
         self.ip = ip
@@ -25,32 +32,40 @@ class HTTPConnection(object):
 
     @property
     def prepared_request(self):
-        req = requests.Request(method=self.method.upper(), url=self.url)
+        req = requests.Request(method=self.method.upper(), url=self.url, params=self.param)
         return req.prepare()
 
+    @property
+    def session(self):
+        return requests.Session()
+
     def send(self):
-        with requests.Session() as s:
+        """"""
+        with self.session as s:
             self._response = s.send(self.prepared_request)
         self.sent_success = True
 
-    @property
-    def response(self):
+    def get_response(self):
         if not self.sent_success:
             self.send()
         return self._response
 
     @property
-    def response_dict(self):
+    def response(self):
         """
         keys in this dict, could be used in case-file: "step->output->match->vars"
+        all keys: ['code', 'content',
+                    'cookies', '_content', 'headers', 'url', 'status_code', '_content_consumed',
+                    'encoding', 'request', 'connection', 'elapsed', 'raw', 'reason', 'history',
+                    ]
         :return:
         """
-        # keys: ['cookies', '_content', 'headers', 'url', 'status_code', '_content_consumed', 'encoding', 'request', 'connection', 'elapsed', 'raw', 'reason', 'history']
-        _dict = self.response.__dict__
+
+        _dict = self.get_response().__dict__
         code, content = _dict.get('status_code'), _dict.get('_content')
-        _dict.update(dict(code=code, content=content))
+        _dict.update(code=code, content=content)
         return _dict
 
 
 if __name__ == '__main__':
-    print HTTPConnection('www.baidu.com').response_dict['content']
+    pass
