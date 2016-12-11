@@ -8,15 +8,19 @@
 
 "precondition":
   "version": "系统版本"
-  "function":
-      "func": "前置函数名称"
-      "args":
-          "type": "参数数据类型"
-          "value": "参数值"
+  "prefunction":
+      - "func_name": "前置函数名称1"
+        "args":
+            - "name": "参数名1"
+              "type": "参数数据类型"
+              "value": "参数值"
+            - "name": "参数名2"
+              "type": "参数数据类型"
+              "value": "参数值"
+      - "func_name": "前置函数名称2"
   "dependency":
-    "依赖接口1",
-    "依赖接口2",
-    "..."
+    - "依赖接口1",
+    - "依赖接口2",
 
 "step":
   "input":
@@ -25,20 +29,23 @@
         "port": "HTTP请求的端口"
         "path": "HTTP请求的路径"
         "method": "GET/POST/DELETE"
-        "args":
-            "type": "参数数据类型"
-            "value": "参数值"
-      "call":
-        "server": "webadmin"
-        "cmd": "01"
-        "args":
-            "type": "参数数据类型"
-            "value": "参数值"
+        "param":
+            - "name": "参数名1"
+              "type": "参数数据类型"
+              "value": "参数值"
+            - "name": "参数名2"
+              "type": "参数数据类型"
+              "value": "参数值"
   "output":
       "strict": "严格匹配，不允许返回其他变量"
-      "match":
-          "var": "输出的变量名"
-          "opt": "比较运算符（大于／等于／小于／不等于／加减N/正则满足/...）"
-          "val":
-            "type": "期望数据类型"
-            "value": "期望数据的值"
+      "expect":
+          - "var": "输出的变量名1"
+            "cmp": "比较运算符（大于／等于／小于／不等于／加减N/正则满足/...）"
+            "val":
+              "type": "期望数据类型"
+              "value": "期望数据的值"
+          - "var": "输出的变量名2"
+            "cmp": "比较运算符（大于／等于／小于／不等于／加减N/正则满足/...）"
+            "val":
+              "type": "期望数据类型"
+              "value": "期望数据的值"
