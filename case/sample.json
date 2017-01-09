@@ -26,6 +26,7 @@
     {
       "input": {
         "http": {
+          "version": "",
           "ip": "",
           "port": "",
           "path": "",

@@ -13,6 +13,7 @@
         "prefunc": "前置函数名称",
         "args": [
           {
+            "name": "参数名",
             "type": "参数数据类型",
             "value": "参数值"
           }
@@ -29,6 +30,7 @@
     {
       "input": {
         "http": {
+          "version": "HTTP协议版本",
           "ip": "HTTP请求的IP地址",
           "port": "HTTP请求的端口",
           "path": "HTTP请求的路径",
@@ -36,6 +38,7 @@
           "method": "GET/POST/DELETE",
           "param": [
             {
+              "name": "参数名",
               "type": "参数数据类型",
               "value": "参数值"
             }
@@ -46,6 +49,7 @@
           "cmd": "01",
           "param": [
             {
+              "name": "参数名",
               "type": "参数数据类型",
               "value": "参数值"
             }

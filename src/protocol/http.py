@@ -3,7 +3,7 @@ import requests
 
 
 class HTTPConnection(IConnection):
-    def __init__(self, url=None, ip=None, port=None, path=None, method='GET', param=None):
+    def __init__(self, version='1.1', url=None, ip=None, port=None, path=None, method='GET', param=None):
         """
         params in case-file: "step->input->http"
         Either 'url' or 'ip' + 'port' + 'path' is required.
@@ -15,6 +15,7 @@ class HTTPConnection(IConnection):
         :param param:
         """
         self.name = 'http'
+        self.version = version
         self.ip = ip
         self.port = port
         self.path = path

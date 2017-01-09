@@ -25,6 +25,7 @@
 "step":
   "input":
       "http":
+        "version": "HTTP协议版本"
         "ip": "HTTP请求的IP地址"
         "port": "HTTP请求的端口"
         "path": "HTTP请求的路径"
